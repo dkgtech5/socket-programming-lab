@@ -11,24 +11,24 @@
 
 ## Theory
 
-TCP (Transmission Control Protocol) is a connection-oriented protocol that provides reliable, ordered, and error-free communication between two devices over a network.
+TCP (Transmission Control Protocol) is a connection-oriented communication protocol that ensures reliable, ordered, and error-free data transmission between a client and a server.
 
-In this experiment, the server creates a socket, binds it to a specific port, and waits for incoming client connections. When a client connects, the server retrieves the current system date and time using the C Standard Library and sends it to the client. The client receives the data and displays it on the terminal.
+In this experiment, the server creates a TCP socket, binds it to a specified port, and listens for incoming client connections. After accepting a client connection, the server retrieves the current system date and time using the C Standard Library (`time.h`) and sends it to the connected client. The client receives the message and displays the current date and time on the terminal.
 
 ---
 
 ## System Calls Used
 
-| Function    | Description                                          |
-| ----------- | ---------------------------------------------------- |
-| `socket()`  | Creates a new socket.                                |
-| `bind()`    | Assigns an IP address and port number to the socket. |
-| `listen()`  | Waits for incoming client connection requests.       |
-| `accept()`  | Accepts a connection from a client.                  |
-| `connect()` | Establishes a connection with the server.            |
-| `read()`    | Receives data from the socket.                       |
-| `write()`   | Sends data through the socket.                       |
-| `close()`   | Closes the socket connection.                        |
+| Function    | Description                                        |
+| ----------- | -------------------------------------------------- |
+| `socket()`  | Creates a TCP socket.                              |
+| `bind()`    | Binds the socket to an IP address and port number. |
+| `listen()`  | Listens for incoming client connection requests.   |
+| `accept()`  | Accepts a client connection request.               |
+| `connect()` | Establishes a connection with the server.          |
+| `read()`    | Receives data from the server.                     |
+| `write()`   | Sends data to the client.                          |
+| `close()`   | Closes the socket connection.                      |
 
 ---
 
@@ -45,13 +45,15 @@ gcc client.c -o client
 
 ## Execution
 
-Start the server:
+### Start the Server
 
 ```bash
 ./server 5000
 ```
 
-Open another terminal and start the client:
+### Start the Client
+
+Open another terminal and run:
 
 ```bash
 ./client 127.0.0.1 5000
@@ -59,7 +61,7 @@ Open another terminal and start the client:
 
 ---
 
-## Expected Output
+## Sample Output
 
 ### Server
 
@@ -81,16 +83,22 @@ Sun Jun 20 10:35:48 2026
 
 ---
 
+## Output Screenshot
+
+![Lab 1 Output](Output/output.png)
+
+---
+
 ## Learning Outcomes
 
-* Understood the Client-Server communication model.
-* Learned the working of TCP sockets.
-* Implemented reliable communication using TCP.
-* Practiced the use of Linux socket programming APIs.
-* Successfully transferred data from server to client.
+* Understood the TCP client-server communication model.
+* Learned how to create and manage TCP sockets using the POSIX Socket API.
+* Implemented reliable communication between a server and a client.
+* Practiced socket programming and data transmission in C on Linux.
+* Gained hands-on experience with network programming fundamentals.
 
 ---
 
 ## Conclusion
 
-The experiment successfully demonstrated TCP client-server communication using the POSIX Socket API. The server accepted a client connection, retrieved the current system date and time, and transmitted it reliably to the client. This lab provided practical experience with socket creation, connection establishment, data transmission, and connection termination in C under Linux.
+This experiment successfully demonstrated TCP client-server communication using the POSIX Socket API. The server accepted a client connection, obtained the current system date and time, and transmitted it to the client. The experiment provided practical experience with socket creation, connection establishment, data transmission, and connection termination in Linux using the C programming language.
